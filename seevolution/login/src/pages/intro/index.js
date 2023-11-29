@@ -1,75 +1,82 @@
 import React from "react"
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native"
+import { View, Text, StyleSheet, TextInput, Image, TouchableOpacity } from "react-native"
 import { useNavigation } from '@react-navigation/native'
 import * as Animatable from 'react-native-animatable'
 import Cadastro from "../cadastro"
+import Undraw from "../../assets/undraw.png"
 
 export default function Intro() {
   const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <Animatable.View
-        animation="fadeInLeft"
-        delay={500}
-        style={styles.containerHeader}
-      >
+       
+      > 
+      <Image
+        style={styles.undraw}
+        source={require('../../assets/undraw.png')}
+      />
         <Text style={styles.message}> Evolução</Text>
-        <Text style={styles.message2}> O intuito do projeto é trazer facilidade às pessoas para consumirem conteúdos e estratégias para sua evolução. Além de motivar e mostrar o avanço/crescimento dos seus esforços e dedicações.</Text>
+        <Text style={styles.message2}> O intuito do projeto é trazer facilidade às pessoas para consumirem conteúdos e estratégias para sua evolução. Além de {`\n`} motivar e mostrar o avanço/crescimento{`\n`} dos seus esforços e dedicações.</Text>
       </Animatable.View>
+
       <TouchableOpacity style={styles.button}
           onPress={() => navigation.navigate(Cadastro)}>
-          <Text style={styles.registerText}>Teste</Text>
+          <Text style={styles.registerText}>Começar</Text>
         </TouchableOpacity>
 
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
+    alignItems: 'center',
     flex: 1,
     backgroundColor: '#0B1A1F'
   },
   containerHeader: {
-    marginTop: '15%',
-    marginBottom: '8%',
-    paddingStart: '5%'
+   
+  },
+  undraw:{
+    marginLeft: 60,
+    marginRight: 60,
+    marginTop: '30%',
+    width: 260,
+    height: 260,
+    marginBottom: 20,
   },
   message: {
-    marginTop:'65%',
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: 25,
     marginLeft: 20,
     marginRight: 40,
-    color: '#fff'
-    /*fontWeight: 'bold'*/
+    color: '#fff',
+    fontWeight: 'bold'
   },
   message2: {
-    marginTop:'65%',
+    
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: 17,
     marginLeft: 20,
     marginRight: 40,
     color: '#fff'
     /*fontWeight: 'bold'*/
   },
-  text: {
-    fontSize:20,
-    color:'white',
-    backgroundColor:'black',
-    textAlign:'center',
-    marginBottom:50
+  registerText:{
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+    alignItems: 'center'
   },
 
   button: {
-    position: 'absolute',
-    backgroundColor: 'red',
-    borderRadius: 50,
+    backgroundColor: '#AE001B',
+    width: '80%',
+    borderRadius: 4,
     paddingVertical: 8,
-    width: '60%',
-    alignSelf: 'center',
-    bottom: '15%',
-    alignItems: 'center',
-    justifyContent: 'center'
+    marginTop:115,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
